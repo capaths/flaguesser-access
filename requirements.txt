@@ -1,0 +1,3 @@
+pyyaml==5.1.1
+nameko==2.12.0
+pyjwt==1.7.1
