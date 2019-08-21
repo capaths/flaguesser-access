@@ -1,17 +1,17 @@
 """Access Service"""
 
-import requests
+import time
 import json
+
+from urllib.parse import urljoin
+
+import requests
 
 from nameko.rpc import rpc, RpcProxy
 from nameko.dependency_providers import Config
 from nameko.extensions import DependencyProvider
 
-from urllib.parse import urljoin
 import jwt
-
-import time
-import json
 
 
 class PlayerREST:

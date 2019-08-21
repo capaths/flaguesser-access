@@ -1,6 +1,7 @@
 FROM python:3
 
-RUN apt-get update && apt-get -y install netcat && apt-get clean
+LABEL version="0.1"
+LABEL description="This image contains the access service for the Flaguesser App"
 
 WORKDIR /app
 
@@ -8,12 +9,7 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY config.yaml ./
-COPY run.sh ./
 
-COPY access/service.py ./
-COPY access/secret.py ./
-COPY access/authorization.py ./
+COPY access/ access/
 
-RUN chmod +x ./run.sh
-
-CMD ["./run.sh"]
+CMD ["nameko", "run" ,"--config config.yaml", "access.service"]

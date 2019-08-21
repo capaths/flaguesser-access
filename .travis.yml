@@ -1,0 +1,17 @@
+sudo: required
+services:
+  - docker
+
+language: python
+python:
+  - "3.6"
+
+script:
+  - pip install pytest==4.6.5
+  - pip install -r requirements.txt
+  - pytest test/test.py
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build .
+  - docker push "$DOCKER_USERNAME"/games-accessls
