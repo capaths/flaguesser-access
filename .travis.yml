@@ -13,5 +13,5 @@ script:
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build .
-  - docker push ${DOCKER_USERNAME}/games-access
+  - docker build . -t ${DOCKER_USERNAME}/gamesaccess
+  - docker push ${DOCKER_USERNAME}/gamesaccess
