@@ -26,7 +26,6 @@ after_success:
   -d '{"request":{"branch":"master"}}'
   https://api.travis-ci.org/repo/${TRAVIS_USERNAME}%2F${TRAVIS_REPO}}/requests
 
-'
 env:
   global:
     secure: HfJ3fnUmAPFf3tGBeTBd1ALmCM9NGVXG1kQOzblBXJj9JizIrd+lTNrzB0zqTREN03OI0rPGKyo8EaGftE4efuA8A2tGB7pUjwqfaOs5HdKG+iZTM5EEU8EiCTsKUVkoPdrTsB0zq8ho7tHT0zd8u2jD/7pUviTzGkpefU/BDGEgNbM4D0OA0jfdKs5dYEEm0KcqhACuttpTv7MQSB2NsYPl4D9mCQxd5II5pJIx3XSQ+EqMjX+YvT4UVR3O5IetakJEbwbK8+FFiGGjuiqwdLuqXE1aFPHJFAEGiTOtAW1Yz9EGIPGwnZdI6GxZf2kc1e1feo3UyPx6PqUvuzmSpQvk6jMrkV3bjj2unje3cMWyXXEGiw1O+GF9eh28g7/12vBp+t599I3Qxsq+ytaXBR/VqjOoy2Eygl6mOjFwciZY/iS6YkHR/SCvK1KyPfnCpZvpxbiBaSGrgY/390RR+DAa+cNRtlOMNQookYFbMSWo+1EwKlnPC3+diGZNT1A94ucbk6wczB950eJ8KMyeBYZN+jSUgQa5C15yz7dSbzR66jyg7iEyAYLhXxDesRP9O7IxON1H4oIRVYmHCxaZfFU4+AAeSjjyOC5mRk6GWcGGm2uQ6txbpbUOiMy4FE+TdSwbCbD3qcrI53BL+3RWHKngMm9ezqgXNrwinCMdYH0=
