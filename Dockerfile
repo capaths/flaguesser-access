@@ -12,4 +12,4 @@ COPY config.yaml ./
 
 COPY access/ access/
 
-CMD ["nameko", "run" ,"--config config.yaml", "access.service"]
+CMD ["nameko", "run", "--config", "config.yaml", "access.service"]
