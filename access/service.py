@@ -22,7 +22,7 @@ class PlayerREST:
         return urljoin(f"http://{self.host}:{self.port}/", path)
 
     def post(self, path: str, payload: dict):
-        req = requests.post(self._get_url(path), json=json.dumps(payload))
+        req = requests.post(self._get_url(path), params=payload)
         return {
             "content": req.content,
             "status_code": req.status_code
