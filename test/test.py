@@ -11,28 +11,12 @@ TEST_PASSWORD = "secret"
 def test_signup():
     service = worker_factory(AccessService)
 
-    def post_player(path, payload):
-        if payload["username"] == TEST_USERNAME:
-            return {
-                "content": None,
-                "status_code": 200
-            }
-        elif payload["username"] == TEST_USERNAME2:
-            return {
-                "content": None,
-                "status_code": 400
-            }
-        else:
-            return {
-                "content": None,
-                "status_code": 500
-            }
-
-    service.player_rest.post.side_effect = post_player
+    service.player_rpc.create_player.side_effect = \
+        lambda username, password, country, elo: username == TEST_USERNAME and password == TEST_PASSWORD
 
     assert service.signup(TEST_USERNAME, TEST_PASSWORD)
-    assert not service.signup(TEST_USERNAME2, TEST_PASSWORD)
     assert not service.signup("", TEST_PASSWORD)
+    assert not service.signup(TEST_USERNAME, "")
 
 
 def test_login():

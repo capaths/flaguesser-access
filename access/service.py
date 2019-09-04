@@ -3,7 +3,7 @@
 import time
 import json
 
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlencode
 
 import requests
 
@@ -22,7 +22,10 @@ class PlayerREST:
         return urljoin(f"http://{self.host}:{self.port}/", path)
 
     def post(self, path: str, payload: dict):
-        req = requests.post(self._get_url(path), params=payload)
+        headers = {
+            'Content-Type': 'application/json'
+        }
+        req = requests.post(self._get_url(path), json=payload, headers=headers)
         return {
             "content": req.content,
             "status_code": req.status_code
@@ -46,7 +49,6 @@ class AccessService:
 
     player_rpc = RpcProxy("player")
     player_rest = PlayerRESTProvider()
-    auth = RpcProxy("access")
 
     config = Config()
 
@@ -68,16 +70,4 @@ class AccessService:
 
     @rpc
     def signup(self, username, password):
-
-        data = {
-            "username": username,
-            "password": password,
-            "country": "Chile",
-            "elo": 1000
-        }
-
-        req = self.player_rest.post("/player", data)
-
-        if req["status_code"] == 200:
-            return True
-        return False
+        return self.player_rpc.create_player(username, password, "Chile", 1000)
