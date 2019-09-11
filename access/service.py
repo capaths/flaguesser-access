@@ -69,5 +69,5 @@ class AccessService:
         return json.dumps({"jwt": token.decode(), "user": player})
 
     @rpc
-    def signup(self, username, password):
-        return self.player_rpc.create_player(username, password, "Chile", 1000)
+    def signup(self, username, password, country):
+        return self.player_rpc.create_player(username, password, country, 1000)

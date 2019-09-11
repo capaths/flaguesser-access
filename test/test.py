@@ -14,9 +14,9 @@ def test_signup():
     service.player_rpc.create_player.side_effect = \
         lambda username, password, country, elo: username == TEST_USERNAME and password == TEST_PASSWORD
 
-    assert service.signup(TEST_USERNAME, TEST_PASSWORD)
-    assert not service.signup("", TEST_PASSWORD)
-    assert not service.signup(TEST_USERNAME, "")
+    assert service.signup(TEST_USERNAME, TEST_PASSWORD, "Chile")
+    assert not service.signup("", TEST_PASSWORD, "Chile")
+    assert not service.signup(TEST_USERNAME, "", "Chile")
 
 
 def test_login():
